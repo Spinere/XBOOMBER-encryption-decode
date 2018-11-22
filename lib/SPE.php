@@ -30,18 +30,14 @@ class Spiner {
 	
 	public function decode($get){
 		
-		$_1 = 424; //fix
-		// Get index Hex Start
+		$_1 = 424; 
 		$cr_content = $this->get_xb($get);
 		$_2p = strpos($cr_content, "0x");
 		$_2 = substr($cr_content,$_2p,6);
-		// Get index Hex End
-		//$_64 = 1367; //base64
 		$_64p = strpos($cr_content, "eval");
 		$_64 = base64_decode(substr($cr_content,$_64p+28,452));
 		$_64p = strpos($_64, "0x");
 		$_64 = substr($_64,$_64p,5);
-		// 64 end
 		$open=fopen($get,'rb');fread($open,$_64);
 		$decoded=base64_decode(strtr(fread($open,$_1),'dA61PgCMoqBO0J3fbU9Rs8lrtu2WF+xvkz/QTZ7EN4KSYcpaIhGL5yXDnejmiwVH=','ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'));
 		$decoded=base64_decode(strtr(fread($open,$_2),'dA61PgCMoqBO0J3fbU9Rs8lrtu2WF+xvkz/QTZ7EN4KSYcpaIhGL5yXDnejmiwVH=','ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'));fclose($open);
