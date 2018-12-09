@@ -13,7 +13,7 @@
 					 \/
 */
 
-		$F_Name = 'xb.php';
+				$F_Name = 'xb.php';
 
 include('lib/SPE.php');
 
